@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
+<<<<<<< HEAD
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
+=======
+#define forr(i,a,b) for(int i=(a);i<=(b);i++)
+>>>>>>> d1b029fc396c7d1afedabb27f42f5b63885df834
 #define forn(i,n) forr(i,0,n)
 
 using namespace std;
@@ -14,6 +18,7 @@ int main(int argc, char *argv[]) {
 	while (cin>>N, N!=0){
 		
 		vector<int> Vallas(N);
+<<<<<<< HEAD
 		int contador=0, postes, posicionInicial;
 		
 		forn(i,N) cin >> Vallas[i];
@@ -46,6 +51,25 @@ int main(int argc, char *argv[]) {
 		}while (j!=posicionInicial);
 		
 		cout << postes << endl;
+=======
+		int contador=0;
+		
+		forn(i,N-1) cin >> Vallas[i];
+		
+		forr(i, 1, N-1) {
+			
+			if (Vallas[i-1] == 0 && Vallas[i] == 0) {
+				contador++;
+				Vallas[i] = 1;
+			}
+		}
+		
+		if (Vallas[0]==0 && Vallas[N-1] == 0){
+			contador++;
+		}
+		
+		cout << contador << endl;
+>>>>>>> d1b029fc396c7d1afedabb27f42f5b63885df834
 	}
 	
 	
