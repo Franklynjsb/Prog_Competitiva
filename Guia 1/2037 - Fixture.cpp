@@ -9,10 +9,19 @@ struct Jugador {
 };
 
 using namespace std;
-//1+2+3+4+5+6+7+8+9
-//casos=4;
-//4+3+2+1 = 10
-//312 = 6
+
+void OrdenarLista(vector<Jugador> Lista){
+	int largo = Lista.size();
+	forr(i,0,largo){
+		forr(j,1,largo){
+			if (Lista[j-1].lista < Lista[j].lista){
+				Jugador aux = Lista[j-1];
+				Lista[j-1]=Lista[j];
+				Lista[j] = aux;
+			}
+		}
+	}
+}
 
 int main(int argc, char *argv[]) {
 	
@@ -23,13 +32,16 @@ int main(int argc, char *argv[]) {
 	int casos;
 	while (cin>>casos, casos!=-1){
 		vector<Jugador> Listado(casos);
-		string Florencia;
+		string Florencia{};
 		
 		forr(i,1,casos){
-			cin >> Listado[i].lista;
-			Listado[i].num=i+1;
+			cin >> Listado[i-1].lista;
+			Listado[i-1].num=i+1;
 		}
 		
+		OrdenarLista(Listado);
+		
+		forr(i,0,casos){Florencia+=to_string(Listado[i].num);}
 		
 		cout << Florencia << endl;
 	}
