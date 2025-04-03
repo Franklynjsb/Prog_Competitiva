@@ -1,9 +1,16 @@
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
-#define forrIg(i,a,b) for(int i=(a);i<=(b);i++)
 #define forn(i,n) forr(i,0,n)
-#define dforn(i,n) for(int i=n;i>=2;i--)//Cambiado para el caso >=2
-
+#define dforn(i,n) for(int i=n-1;i>=0;i--)
+#define forall(it,v) for(auto it=v.begin();it!=v.end();it++)
+#define sz(c) ((int)c.size())
+#define rsz resize
+#define pb push_back
+#define mp make_pair
+#define lb lower_bound
+#define ub upper_bound
+#define fst first
+#define snd second
 
 using namespace std;
 
@@ -20,22 +27,30 @@ int main(int argc, char *argv[]) {
 		string Florencia;
 		
 		//Ingresa datos
-		forrIg(i,2,casos){cin>>Listado[i];}
+		for(int i=2; i<=casos; i++)cin>>Listado[i];
+		for(auto &e: Listado) reverse(e.begin(), e.end());
 		
-		//Me muevo en la prob de 100 chars
-		forr(i,0,100){//The second line contains N-1 non-empty strings Li of at most100 characters each
-			//Me muevo en la lista que me dan
-			dforn(j,casos){
-				//Comparo caracteres
-				if (i<Listado[j].size() && Listado[j][i]=='1'){
-					//Asigno el jugador en Florencia
-					Florencia+= to_string(j);
+		bool bandera=true;
+		while(bandera){
+			bandera=false;
+			for(int i=2; i<=casos; i++){
+				if(Listado[i].empty()) continue;
+				
+				int jugador= Listado[i].back()-'0';
+				
+				if(jugador == 1){
+					Florencia.pb(char(i+'0'));
+					Listado[i].pop_back();
+					bandera=true;
+				}else if (Listado[jugador].back() == (i+'0')){
+					Listado[i].pop_back();
+					Listado[jugador].pop_back();
+					bandera=true;
 				}
 			}
 		}
 		
-		
-		cout << Florencia << endl;
+		cout << Florencia << "\n";
 	}
 	
 	

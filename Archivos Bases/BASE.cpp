@@ -11,8 +11,9 @@
 #define ub upper_bound
 #define fst first
 #define snd second
+#define rv(e) reverse(e.begin(), e.end());
 
-#ifdef NANO
+#ifdef NANO//Para archivos
 //local
 #else
 //judge
