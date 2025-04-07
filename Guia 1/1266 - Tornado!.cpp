@@ -52,8 +52,9 @@ int main(int argc, char *argv[]) {
 				ceros++;
 			}
 		}
-		int Resultado = (UnoIzq + ((N-UnoDer-1)/2))/2;
-		cout << Resultado + total << "\n";
+		int cerosDer = N - UnoDer - 1;
+		int bordes = (UnoIzq + cerosDer)/2;
+		cout << total + bordes << "\n";
 	}
 	
 	
