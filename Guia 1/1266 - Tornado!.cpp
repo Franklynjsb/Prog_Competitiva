@@ -22,10 +22,20 @@ int main(int argc, char *argv[]) {
 	cout.tie(NULL);
 	
 	int N;
+	bool bandera=true;
 	
 	while (cin>>N, N!=0){
 		int UnoIzq = -1, UnoDer=-1;
 		vector<int> Vallas(N);
+<<<<<<< HEAD
+		int contador=0, posicionInicial=-1, ultimoUno=-1;
+		
+		forn(i,N) {
+			cin >> Vallas[i];
+			if (Vallas[i]!=0 && bandera){
+				posicionInicial=i;
+				bandera=false;
+=======
 		bool primero=true;
 		forn(i,N){
 			cin >> Vallas[i];
@@ -35,9 +45,36 @@ int main(int argc, char *argv[]) {
 			}
 			if(Vallas[i]==1){
 				UnoDer=i;
+>>>>>>> f80b715d50541783ba928ae5ad5411db46f7a85e
+			}
+			if(Vallas[i]==1){
+				ultimoUno=i;
 			}
 		}
 		
+<<<<<<< HEAD
+		if(posicionInicial==-1){//Todos Ceros
+			cout << (N+1)/2 << "\n";
+		}
+		int ans=0;
+		
+		forr(i,posicionInicial, N){
+			if(Vallas[i]==1){
+				ans+=contador/2;
+				contador=0;
+			}else {
+				contador++;
+			}
+		}
+		
+		if (posicionInicial!=-1){
+			int cerosIz=posicionInicial;
+			int cerosDer=(N-ultimoUno-1);
+			ans+=(cerosDer+cerosIz)/2;
+			cout << ans << "\n";
+		}
+		
+=======
 		if (UnoIzq == -1){
 			cout << (N+1)/2 << "\n"; continue;
 		}
@@ -52,9 +89,15 @@ int main(int argc, char *argv[]) {
 				ceros++;
 			}
 		}
+<<<<<<< HEAD
 		int cerosDer = N - UnoDer - 1;
 		int bordes = (UnoIzq + cerosDer)/2;
 		cout << total + bordes << "\n";
+=======
+		int Resultado = (UnoIzq + ((N-UnoDer-1)/2))/2;
+		cout << Resultado + total << "\n";
+>>>>>>> f80b715d50541783ba928ae5ad5411db46f7a85e
+>>>>>>> fd6654f4c6aaf1572a0961861bc255ebc6a924da
 	}
 	
 	
