@@ -17,42 +17,37 @@
 #else
 //judge
 #endif
-
 using namespace std;
 
-<<<<<<< HEAD
 
-=======
-//ACCEPTED
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
 int main(int argc, char *argv[]) {
 	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	int N;
+	vector<string> L;
+	vector<string> N;
+	string amigo, puntoPartida;
 	
-	while(cin>>N, N!=0){
-<<<<<<< HEAD
-		int cont=0,ant=0;
-		vector<int> Loop(N);
-		forr(i,0,N){
-			cin>>Loop[i];
+	while(cin.ignore(numeric_limits<streamsize>::max(), '\n')){
+		getline(cin, amigo);
+		if(amigo.empty())break;
+		L.pb(amigo);
+		cin.ignore();
+	}
+	cout << "Ingrese punto de partida" << endl;
+	cin >> puntoPartida;
+	if(puntoPartida=="nao"){
+		forr(i,0,L.size()){
+			cout << L[i] << " ";
 		}
-		cout << cont << "\n";
-=======
-		vector<int> Loop(N);
-		int cont=0;
+		cout <<"\n";
+	}else {
+		auto x = find(L.begin(), L.end(), puntoPartida);
+		int pos = distance(L.begin(), x);
 		
-		forr(i,0,N){cin>>Loop[i];}
-		forr(i,0,N){
-			int ant = Loop[(i-1+N)%N];
-			int sig = Loop[(i+1)%N];
-			if ((Loop[i]>ant && Loop[i]>sig) || (Loop[i]<ant && Loop[i]<sig))cont++;
-		}
-			cout << cont << "\n";
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
+		
 	}
 	
 	return 0;

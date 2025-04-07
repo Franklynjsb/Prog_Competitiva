@@ -20,40 +20,32 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 
-=======
-//ACCEPTED
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
 int main(int argc, char *argv[]) {
 	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
+
+	vector<vector<double>>  Matriz(12, vector<double>(12));;
 	
-	int N;
+	char t;
+	int l;
 	
-	while(cin>>N, N!=0){
-<<<<<<< HEAD
-		int cont=0,ant=0;
-		vector<int> Loop(N);
-		forr(i,0,N){
-			cin>>Loop[i];
+	cin >> l >> t;
+	
+	forr(i,0,12){
+		forr(j,0,12){
+			cin>>Matriz[i][j];
 		}
-		cout << cont << "\n";
-=======
-		vector<int> Loop(N);
-		int cont=0;
-		
-		forr(i,0,N){cin>>Loop[i];}
-		forr(i,0,N){
-			int ant = Loop[(i-1+N)%N];
-			int sig = Loop[(i+1)%N];
-			if ((Loop[i]>ant && Loop[i]>sig) || (Loop[i]<ant && Loop[i]<sig))cont++;
-		}
-			cout << cont << "\n";
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
 	}
+	
+	double valor=0;
+	forr(i,0,12){
+		valor+=Matriz[l][i];
+	}
+	cout << fixed << setprecision(1);
+	(t=='S')? cout<<valor<<"\n" : cout<<valor/12 << "\n";
 	
 	return 0;
 }
