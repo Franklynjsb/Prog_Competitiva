@@ -1,3 +1,4 @@
+//ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)

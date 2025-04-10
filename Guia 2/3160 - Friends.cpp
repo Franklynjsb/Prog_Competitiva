@@ -1,3 +1,4 @@
+//ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)
@@ -23,7 +24,7 @@ using namespace std;
 vector<string> FindNom(string& nick){
 	vector<string> a;
 	string nombre;
-	//Recorrer el vector nombre con c hasta encontrar espacios
+	
 	for(char c : nick){
 		if(c==' '){
 			if(!nombre.empty()){

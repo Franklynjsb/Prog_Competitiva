@@ -1,3 +1,4 @@
+//ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)
@@ -20,11 +21,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 
-=======
-//ACCEPTED
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
 int main(int argc, char *argv[]) {
 	
 	ios::sync_with_stdio(false);
@@ -34,14 +31,6 @@ int main(int argc, char *argv[]) {
 	int N;
 	
 	while(cin>>N, N!=0){
-<<<<<<< HEAD
-		int cont=0,ant=0;
-		vector<int> Loop(N);
-		forr(i,0,N){
-			cin>>Loop[i];
-		}
-		cout << cont << "\n";
-=======
 		vector<int> Loop(N);
 		int cont=0;
 		
@@ -52,7 +41,6 @@ int main(int argc, char *argv[]) {
 			if ((Loop[i]>ant && Loop[i]>sig) || (Loop[i]<ant && Loop[i]<sig))cont++;
 		}
 			cout << cont << "\n";
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
 	}
 	
 	return 0;
