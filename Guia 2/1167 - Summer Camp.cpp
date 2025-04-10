@@ -17,14 +17,15 @@
 #else
 //judge
 #endif
-
 using namespace std;
 
-<<<<<<< HEAD
+struct participante {
+	int num;
+	string nombre;
+};
 
-=======
-//ACCEPTED
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
+
+
 int main(int argc, char *argv[]) {
 	
 	ios::sync_with_stdio(false);
@@ -32,28 +33,36 @@ int main(int argc, char *argv[]) {
 	cout.tie(NULL);
 	
 	int N;
-	
 	while(cin>>N, N!=0){
-<<<<<<< HEAD
-		int cont=0,ant=0;
-		vector<int> Loop(N);
-		forr(i,0,N){
-			cin>>Loop[i];
-		}
-		cout << cont << "\n";
-=======
-		vector<int> Loop(N);
-		int cont=0;
 		
-		forr(i,0,N){cin>>Loop[i];}
-		forr(i,0,N){
-			int ant = Loop[(i-1+N)%N];
-			int sig = Loop[(i+1)%N];
-			if ((Loop[i]>ant && Loop[i]>sig) || (Loop[i]<ant && Loop[i]<sig))cont++;
+		vector<participante> Lista(N);
+		
+		forr(i,0,N){cin >> Lista[i].nombre >> Lista[i].num;}
+		
+		int pos = 0;
+		int valor = Lista[0].num;
+		
+		
+		while (Lista.size() > 1) {
+			
+			if (valor % 2 == 0) {
+				pos = (pos + valor) % Lista.size();
+			} else {
+				pos = (pos - valor%Lista.size() + Lista.size()) % Lista.size();
+			}
+			
+			valor = Lista[pos].num;
+			Lista.erase(Lista.begin() + pos);
+			
+			if (valor % 2 != 0) {
+				pos = (pos == 0) ? Lista.size() - 1 : pos - 1;
+			}
 		}
-			cout << cont << "\n";
->>>>>>> 1a939f94eeb692885cf2fa8b04bcee117b215590
+		
+		
+		cout << "Vencedor(a): " << Lista[0].nombre << "\n";
 	}
+	
 	
 	return 0;
 }
