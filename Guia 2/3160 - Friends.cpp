@@ -6,6 +6,7 @@
 #define sz(c) ((int)c.size())
 #define rsz resize
 #define pb push_back
+#define pop pop_back
 #define mp make_pair
 #define lb lower_bound
 #define ub upper_bound
@@ -19,38 +20,64 @@
 #endif
 using namespace std;
 
-
+vector<string> FindNom(string& nick){
+	vector<string> a;
+	string nombre;
+	//Recorrer el vector nombre con c hasta encontrar espacios
+	for(char c : nick){
+		if(c==' '){
+			if(!nombre.empty()){
+				a.pb(nombre);
+				nombre.clear();
+			}
+		}else {
+			nombre+=c;
+		}
+	}
+	
+	if(!nombre.empty()) a.pb(nombre);
+	
+	return a;
+}
+	
 int main(int argc, char *argv[]) {
 	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	vector<string> L;
-	vector<string> N;
-	string amigo, puntoPartida;
+	string nuevos, actuales, inicio;
 	
-	while(cin.ignore(numeric_limits<streamsize>::max(), '\n')){
-		getline(cin, amigo);
-		if(amigo.empty())break;
-		L.pb(amigo);
-		cin.ignore();
-	}
-	cout << "Ingrese punto de partida" << endl;
-	cin >> puntoPartida;
-	if(puntoPartida=="nao"){
-		forr(i,0,L.size()){
-			cout << L[i] << " ";
-		}
-		cout <<"\n";
+	getline(cin,actuales);
+	getline(cin,nuevos);
+	getline(cin,inicio);
+	
+	vector<string> L = FindNom(actuales);
+	vector<string> N = FindNom(nuevos);
+	
+	if(inicio != "nao"){
+		
+		//Buscar el nombre "inicio" dentro de la lista L
+		auto i = find(L.begin(),L.end(), inicio);
+		//Si cumple las condiciones Sumo toda la lista desde esa posicion
+		if(i != L.end()){ L.insert(i, N.begin(), N.end()); }
+		//NOTA -> Se "empuja" el resto una posicion cada que inserte
+		
+		
 	}else {
-		auto x = find(L.begin(), L.end(), puntoPartida);
-		int pos = distance(L.begin(), x);
-		
-		
+		//Se insertaría al final
+		L.insert(L.end(), N.begin(), N.end());
 	}
+	
+	//Mostrar Lista
+	for(size_t i=0; i<L.size();i++){
+		cout << L[i];
+		if(i< L.size()-1) cout << " ";
+	}
+	cout <<"\n";
 	
 	return 0;
 }
-
-
+	
+	
+	
