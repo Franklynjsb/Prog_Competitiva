@@ -43,20 +43,17 @@ int main(int argc, char *argv[]) {
 		int pos = 0, valor = Lista[0].num;
 		
 		while (Lista.size() > 1) {
-			
 			//1->Horario
 			int d = (valor%2 == 0)? 1: -1;
 			int t = Lista.size();//Tamanio
-			
 			pos = (pos + d * (valor % t) + t) % t;
+			//Si fue izquierdo lo retrocedo 1 para tomar esa pos
+			if(d == -1) pos = (pos + t - 1) % Lista.size();
 			
 			//nuevo valor
 			valor = Lista[pos].num;
 			//Volar al pibe
 			Lista.erase(Lista.begin() + pos);
-			
-			//Si fue izquierdo lo retrocedo 1 para tomar esa pos
-			if(d == -1) pos = (pos + t - 1) % Lista.size();
 			
 		}
 		
