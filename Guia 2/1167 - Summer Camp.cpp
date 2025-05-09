@@ -48,13 +48,13 @@ int main(int argc, char *argv[]) {
 			int t = Lista.size();//Tamanio
 			pos = (pos + d * (valor % t) + t) % t;
 			//Si fue izquierdo lo retrocedo 1 para tomar esa pos
-			if(d == -1) pos = (pos + t - 1) % Lista.size();
 			
 			//nuevo valor
-			valor = Lista[pos].num;
+			valor = Lista[pos].num-1;
 			//Volar al pibe
 			Lista.erase(Lista.begin() + pos);
 			
+			if(d == -1) pos = (pos + t - 1) % t;
 		}
 		
 		cout << "Vencedor(a): " << Lista[0].nombre << "\n";
