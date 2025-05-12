@@ -1,3 +1,4 @@
+// ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)
@@ -11,7 +12,6 @@
 #define ub upper_bound
 #define fst first
 #define snd second
-#define ll long long
 
 #ifdef NANO
 //local
@@ -28,22 +28,27 @@ int main(int argc, char *argv[]) {
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	
 	int n;
-	vector<int> v(n);
-	forr(i,0,n){cin>>v[i];}
+	cin>>n;
 	
-	int q;
-	cin>>q;
-	
-	while(q--){
-		ll x;
-		cin>>x;
+	while(n--){
+		string f;
+		cin>>f;
 		
-		auto it = lb(v.begin(), v.end(),x);
+		stack<char> d;
+		int r=0;
+		for (char x : f) {
+			if(x=='<'){
+				d.push(x);
+			}else if ( x=='>'){
+				if(!d.empty()){
+					d.pop();
+					r++;
+				}
+			}
+		}
 		
-		if((it == v.end()) or (*it !=x ) )cout << '0 ';
-		else cout << int (it - v.begin() +1) << ' ';
+		cout << r << "\n";
 	}
 	
 	return 0;

@@ -1,3 +1,4 @@
+// ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)
@@ -28,22 +29,21 @@ int main(int argc, char *argv[]) {
 	cout.tie(NULL);
 	
 	string f;
-	bool b=true;
-	
 	while(cin>>f){
-		vector<char> c;
-		
-		forn(i,f.size()){
-			if(f[i]=='(' || f[i]==')') c.pb(f[i]);
+		int p=0;
+		bool b=true;
+		for(char x : f) {
+			if(x=='(')p++;
+			else if(x==')'){
+				if (p==0){
+					b=false;
+					break;
+				}
+				p--;
+			}
 		}
-		
-		forn(i,c.size()-1){
-			if(c[i]=='(' && c[i+1]!=')'){b=false;}
-		}
-		
-		
+		if(p!=0)b=false;
 		(b)? cout << "correct\n" : cout << "incorrect\n";
-		b=false;
 	}
 	
 	return 0;
