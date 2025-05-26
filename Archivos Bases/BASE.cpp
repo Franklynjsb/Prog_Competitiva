@@ -11,9 +11,8 @@
 #define ub upper_bound
 #define fst first
 #define snd second
-#define rv(e) reverse(e.begin(), e.end());
 
-#ifdef NANO//Para archivos
+#ifdef NANO
 //local
 #else
 //judge
@@ -21,8 +20,14 @@
 
 using namespace std;
 
+typedef long long ll;
+typedef pair<int,int> ii;
 
-int main(int argc, char *argv[]) {
+int main() {
+	#ifdef NANO
+		//freopen("input.in", "r", stdin);
+		//freopen("output.out","w", stdout);
+	#endif
 	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
