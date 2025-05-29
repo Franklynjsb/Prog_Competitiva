@@ -34,39 +34,46 @@ int main() {
 	cin>>n;
 	
 	while(cin>>n){
-		vector<int>l;
 		
-		forr(i,0,n){
+		stack<int>s;
+		queue<int>q;
+		priority_queue<int>pq;
+		bool Ys=true, Yq=true, Ypq=true;
+		
+		forn(i,n){
 			cin>>op>>x;
-			if(op==1) l.pb(x);
+			if(op == 1){
+				s.push(x);
+				q.push(x);
+				pq.push(x);
+			}else {
+				if(s.empty() || q.empty() || pq.empty()){
+					Ys=Yq=Ypq=false;
+					continue;
+				}
+				if(Ys){
+					if(s.top()!=x) Ys=false;
+					else s.pop();
+				}
+				if(Yq){
+					if(q.front()!=x) Yq=false;
+					else q.pop();
+				}
+				if(Ypq){
+					if(pq.top()!=x) Ypq=false;
+					else pq.pop();
+				}
+			}
 		}
 		
 		
+		if (Ys + Yq + Ypq > 1) cout << "not sure\n";
+		else if (Ys) cout << "stack\n";
+		else if(Yq) cout << "queue\n";
+		else if (Ypq) cout << "priority queue\n";
+		else cout << "impossible\n";
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//Salidas
-	cout << "stack\n";
-	cout << "It's definitely a queue\n";
-	cout << "queue\n";
-	cout << "It's definitely a queue\n";
-	cout << "priority queue\n";
-	cout << "It's definitely a priority queue\n";
-	cout << "impossible\n";
-	cout << "It can't be a stack, a queue or a priority queue";
-	cout << "not sure";
 	
 	return 0;
 }
