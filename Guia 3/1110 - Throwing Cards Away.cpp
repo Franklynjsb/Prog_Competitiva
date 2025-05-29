@@ -1,4 +1,4 @@
-//-
+//- ACCEPTED
 #include <bits/stdc++.h>
 #define forr(i,a,b) for(int i=(a);i<(b);i++)
 #define forn(i,n) forr(i,0,n)
@@ -24,35 +24,38 @@ using namespace std;
 typedef long long ll;
 typedef pair<int,int> ii;
 
-
 int main() {
+#ifdef NANO
+	freopen("input.in", "r", stdin);
+	//freopen("output.out","w", stdout);
+#endif
 	
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 	
-	int n;
-	while(cin>>n,n!=0){
-		deque<ll> c;
+	ll n;
+	
+	while(cin>>n,n){
+		queue<ll> c;
 		vector<ll> d;
+		forr(i,1,n+1) c.push(i);
 		
-		///
-		forn(i,n+1)c.push_back(i+1);
-		///
-		
+		//Descarto y guardo
 		while(c.size()>1){
-			d.push_back(c.front());
-			c.pop_front();
-			c.pb(c.front());
-			c.pop_front();
+			d.pb(c.front());//Descarto
+			c.pop();
+			
+			c.push(c.front());//Arreglo el arreglo
+			c.pop();
 		}
-		
 		cout << "Discarded cards: ";
-		forall(it,d){
-			if(it!=d.end())cout<< *it << ", ";
-			else cout << *it << "\n";
+		forn(i,d.size()){
+			if(i!=d.size()-1)cout<<d[i]<<", ";
+			else cout << d[i] << "\n";
 		}
-		cout << "Remaining cards: "<<d.front() << "\n";	
+		cout << "Remaining card: " << c.front() << "\n";
+		
 	}
 	
 	
